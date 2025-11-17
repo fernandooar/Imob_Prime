@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipos_imovel', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome', 100)->unique()->nullable(false); // Ex: 'Casa', 'Apartamento', 'Terreno'
-            $table->timestamps();
-        });
+      Schema::create('fotos_imoveis', function (Blueprint $table) {
+        $table->id();
+        
+        $table->foreignId('imovel_id')->constrained('imoveis')->onDelete('cascade');
+        
+        $table->string('url_foto', 255)->nullable(false);
+        $table->timestamps();
+    });
     }
 
     /**
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipos_imovel');
+        Schema::dropIfExists('fotos_imoveis');
     }
 };

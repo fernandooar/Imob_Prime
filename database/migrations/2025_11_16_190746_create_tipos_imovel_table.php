@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipos_usuario', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome', 50)->unique()->nullable(); // Nome do tipo de usuário (Cliente, Corretor, Administrador)
-            $table->timestamps();
-        });
+       Schema::create('tipos_imovel', function (Blueprint $table) {
+        $table->id();
+        $table->string('nome', 100)->unique()->nullable(false); // Ex: 'Casa', 'Apartamento'
+        $table->timestamps();
+    });
     }
 
     /**
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipos_usuario');
+        Schema::dropIfExists('tipos_imovel');
     }
 };

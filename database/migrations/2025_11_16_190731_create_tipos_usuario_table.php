@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('caracteristicas', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome', 100)->unique()->nullable(false); // Ex: 'Piscina', 'Vaga Coberta', 'Portaria 24h'
-            $table->timestamps();
-        });
+       Schema::create('tipos_usuario', function (Blueprint $table) {
+        $table->id();
+        $table->string('nome', 50)->unique()->nullable(false); // Ex: 'Cliente', 'Corretor'
+        $table->timestamps();
+    });
     }
 
     /**
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('caracteristicas');
+        Schema::dropIfExists('tipos_usuario');
     }
 };

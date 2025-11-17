@@ -12,16 +12,14 @@ return new class extends Migration
     public function up(): void
     {
        Schema::create('imovel_caracteristica', function (Blueprint $table) {
-            
-            // Chaves primárias compostas
-            $table->foreignId('imovel_id')->constrained('imoveis')->onDelete('cascade');
-            $table->foreignId('caracteristica_id')->constrained('caracteristicas')->onDelete('cascade');
-            
-            // Define a chave primária composta
-            $table->primary(['imovel_id', 'caracteristica_id']);
-            
-            $table->timestamps();
-        });
+        
+        $table->foreignId('imovel_id')->constrained('imoveis')->onDelete('cascade');
+        $table->foreignId('caracteristica_id')->constrained('caracteristicas')->onDelete('cascade');
+        
+        $table->primary(['imovel_id', 'caracteristica_id']);
+        
+        $table->timestamps();
+    });
     }
 
     /**
